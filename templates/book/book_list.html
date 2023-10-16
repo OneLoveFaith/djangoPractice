@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book List</title>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -34,6 +35,23 @@
             display: block;
             margin: 0 auto;
         }
+
+         .details-link {
+            display: inline-block;
+            background-color: #007BFF;
+            color: #fff;
+            border: 1px solid #0056b3;
+            padding: 8px 12px;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .details-link:hover {
+            background-color: #0056b3;
+        }
+
     </style>
 </head>
 <body>
@@ -46,8 +64,13 @@
                 <img class="book-image" src="{{ book.image.url }}" alt="{{ book.title }}"><br>
                 Cost: ${{ book.cost }}<br>
                 Created Date: {{ book.created_date }}
+
+                <!-- Ссылка на отдельную страницу для подробной информации -->
+                <a href="{% url 'book_detail' book.id %}" class="details-link">Подробнее</a>
+
             </li>
         {% endfor %}
     </ul>
+
 </body>
 </html>

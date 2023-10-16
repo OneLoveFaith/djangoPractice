@@ -18,10 +18,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
-from book.views import book_list
+from book.views import book_list, book_detail
 
 urlpatterns = [
     path('books/', book_list, name='book_list'),
+    path('books/<int:book_id>/', book_detail, name='book_detail'),
     path('admin/', admin.site.urls),
 ]
 
