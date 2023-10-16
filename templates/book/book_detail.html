@@ -1,36 +1,23 @@
-<!-- book/templates/book/book_detail.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ book.title }} - Book Detail</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
+{% extends 'layout/base.html' %}
 
-        h1 {
-            color: #333;
-        }
 
-        .book-image {
-            max-width: 300px;
-            max-height: 300px;
-            width: auto;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-        }
-    </style>
-</head>
-<body>
+
+{% block title%}
+    {{ book.title }} - Book Detail
+{% endblock title %}
+
+{% block content %}
+
+    <div class="container">
+
     <h1>{{ book.title }} - Book Detail</h1>
     <p>Description: {{ book.description }}</p>
     <img class="book-image" src="{{ book.image.url }}" alt="{{ book.title }}">
     <p>Cost: ${{ book.cost }}</p>
     <p>Created Date: {{ book.created_date }}</p>
     <p>Additional Info: {{ book.additional_info }}</p>
-</body>
-</html>
+
+    </div>
+
+{% endblock content %}
+

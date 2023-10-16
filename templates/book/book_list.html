@@ -1,60 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book List</title>
+{% extends 'layout/base.html' %}
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
+{% block title%}
+    {{ book.title }} - Book Detail
+{% endblock title %}
 
-        h1 {
-            color: #333;
-        }
+{% block content %}
 
-        ul {
-            list-style: none;
-            padding: 0;
-        }
+    <div class="container">
 
-        li {
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            padding: 10px;
-            border-radius: 5px;
-        }
-
-        .book-image {
-            max-width: 200px;
-            max-height: 200px;
-            width: auto;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-        }
-
-         .details-link {
-            display: inline-block;
-            background-color: #007BFF;
-            color: #fff;
-            border: 1px solid #0056b3;
-            padding: 8px 12px;
-            border-radius: 4px;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-            cursor: pointer;
-        }
-
-        .details-link:hover {
-            background-color: #0056b3;
-        }
-
-    </style>
-</head>
-<body>
     <h1>Book List</h1>
     <ul>
         {% for book in books %}
@@ -65,12 +18,12 @@
                 Cost: ${{ book.cost }}<br>
                 Created Date: {{ book.created_date }}
 
-                <!-- Ссылка на отдельную страницу для подробной информации -->
-                <a href="{% url 'book_detail' book.id %}" class="details-link">Подробнее</a>
+                <a href="{% url 'book_detail' book.id %}" class="btn btn-outline-primary">More</a>
 
             </li>
         {% endfor %}
     </ul>
 
-</body>
-</html>
+    </div>
+
+{% endblock content %}
