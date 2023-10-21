@@ -16,8 +16,32 @@
     <p>Cost: ${{ book.cost }}</p>
     <p>Created Date: {{ book.created_date }}</p>
     <p>Additional Info: {{ book.additional_info }}</p>
+    <h2>Комментарии</h2>
+    <ul class="list-group">
+        {% for comment in comments %}
+            <li class="list-group-item mb-2"> <!-- Добавлен класс mb-2 для отступа между комментариями -->
+                {{ comment.text }} ({{ comment.created_date }})
+                <form method="post" action="{% url 'delete_comment' book.id comment.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
 
+    <h3>Добавить комментарий</h3>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.text.label_tag }}
+            <input type="text" class="form-control" name="{{ form.text.name }}" id="{{ form.text.id }}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Добавить комментарий</button>
+    </form>
     </div>
+
+
+
 
 {% endblock content %}
 

@@ -16,7 +16,8 @@
                 Description: {{ book.description }}<br>
                 <img class="book-image" src="{{ book.image.url }}" alt="{{ book.title }}"><br>
                 Cost: ${{ book.cost }}<br>
-                Created Date: {{ book.created_date }}
+                Created Date: {{ book.created_date }}<br>
+                Number of Comments: {{ book.num_comments }}<br>
 
                 <a href="{% url 'book_detail' book.id %}" class="btn btn-outline-primary">More</a>
 

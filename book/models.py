@@ -8,7 +8,14 @@ class Book(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     additional_info = models.TextField(default='Default additional info')
 
+    def __str__(self):
+        return self.title
 
     class Meta:
         app_label = 'book'
 
+
+class Comment(models.Model):
+    book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='comments')
+    text = models.TextField()
+    created_date = models.DateTimeField(auto_now_add=True)
