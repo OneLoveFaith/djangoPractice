@@ -25,6 +25,8 @@ from book.views import book_list, book_detail
 urlpatterns = [
     path('books/', book_list, name='book_list'),
     path('books/<int:book_id>/', book_detail, name='book_detail'),
+    path('add_book/', views.add_book, name='add_book'),
+    path('delete_book/<int:book_id>/', views.delete_book, name='delete_book'),
     path('book/<int:book_id>/comment/<int:comment_id>/delete/', views.delete_comment, name='delete_comment'),
     path('admin/', admin.site.urls),
 
