@@ -24,6 +24,19 @@ def delete_book(request, book_id):
         return redirect('book_list')
     return render(request, 'book/book_detail.html', {'book': book})
 
+def edit_book(request, book_id):
+    book = get_object_or_404(Book, pk=book_id)
+
+    if request.method == 'POST':
+        form = BookForm(request.POST, request.FILES, instance=book)
+        if form.is_valid():
+            form.save()
+            return redirect('book_detail', book_id=book.id)
+    else:
+        form = BookForm(instance=book)
+
+    return render(request, 'book/edit_book.html', {'form': form, 'book': book})
+
 def book_detail(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
     comments = Comment.objects.filter(book=book)

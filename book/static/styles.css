@@ -8,7 +8,15 @@ body {
 
 
 h1 {
-    color: #333;
+    font-family: 'DM Serif Display', serif;
+}
+
+h4{
+    font-family: 'Cinzel', serif;
+}
+
+p{
+    font-family: 'Comic Neue', cursive;
 }
 
 ul {
@@ -21,6 +29,11 @@ li {
     border: 1px solid #ddd;
     padding: 10px;
     border-radius: 5px;
+}
+
+.logo{
+    width:60px;
+    margin-left: 16px;
 }
 
 .book-image {
@@ -52,5 +65,4 @@ footer {
     margin-top: auto;
     text-align: center;
     padding: 10px;
-    background-color: #f1f1f1;
 }

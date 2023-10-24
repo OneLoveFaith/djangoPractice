@@ -29,6 +29,8 @@
         {% endfor %}
     </ul>
 
+    <a class = 'btn btn-outline-primary' href="{% url 'edit_book' book.id %}">Edit</a>
+
     <h3>Add a comment</h3>
     <form method="post">
         {% csrf_token %}
@@ -36,17 +38,15 @@
             {{ form.text.label_tag }}
             <input type="text" class="form-control" name="{{ form.text.name }}" id="{{ form.text.id }}" required>
         </div>
-        <button type="submit" class="btn btn-primary">Add a comment</button>
+        <button type="submit" class="btn btn-outline-primary">Add a comment</button>
     </form>
 
 
     <form method="post" action="{% url 'delete_book' book.id %}">
         {% csrf_token %}
-        <button type="submit" class="btn btn-danger">Delete book</button>
+        <button type="submit" class="btn btn-outline-danger">Delete book</button>
     </form>
     </div>
-
-
 
 
 {% endblock content %}
