@@ -1,0 +1,25 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}
+    {{ book.title }}
+{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <h1>Search Results</h1>
+        <ul>
+            {% for book in books %}
+                <li>
+                    <h1>{{ book.title }} - Book Detail</h1>
+                    <p>Description: {{ book.description }}</p>
+                    <img class="book-image" src="{{ book.image.url }}" alt="{{ book.title }}">
+                    <p>Cost: ${{ book.cost }}</p>
+                    <p>Created Date: {{ book.created_date }}</p>
+                    <a href="{% url 'book_detail' book.id %}" class="btn btn-outline-primary">More</a>
+                </li>
+            {% empty %}
+                <p>No results found for "{{ query }}".</p>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock content %}

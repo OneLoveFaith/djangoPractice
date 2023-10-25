@@ -62,3 +62,14 @@ def delete_comment(request, book_id, comment_id):
         comment.delete()
 
     return redirect('book_detail', book_id=book_id)
+
+
+def search_book(request):
+    query = request.GET.get('q')
+    if query:
+        books = Book.objects.filter(title__icontains=query)
+    else:
+        books = []
+
+    return render(request, 'book/search_results.html', {'books': books, 'query': query})
+
