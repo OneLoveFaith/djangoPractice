@@ -32,7 +32,7 @@
     <a class = 'btn btn-outline-primary' href="{% url 'edit_book' book.id %}">Edit</a>
 
     <h3>Add a comment</h3>
-    <form method="post">
+    <form method="post" action="">
         {% csrf_token %}
         <div class="form-group">
             {{ form.text.label_tag }}

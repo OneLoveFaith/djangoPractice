@@ -19,17 +19,17 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
-from book import views
-from book.views import book_list, book_detail
+from book.views import BookListView, BookDetailView, AddBookView, DeleteBookView, EditBookView, SearchBookView, \
+    DeleteCommentView
 
 urlpatterns = [
-    path('books/', book_list, name='book_list'),
-    path('books/<int:book_id>/', book_detail, name='book_detail'),
-    path('add_book/', views.add_book, name='add_book'),
-    path('delete_book/<int:book_id>/', views.delete_book, name='delete_book'),
-    path('edit/<int:book_id>/', views.edit_book, name='edit_book'),
-    path('search/', views.search_book, name='search_book'),
-    path('book/<int:book_id>/comment/<int:comment_id>/delete/', views.delete_comment, name='delete_comment'),
+    path('books/', BookListView.as_view(), name='book_list'),
+    path('books/<int:pk>/', BookDetailView.as_view(), name='book_detail'),
+    path('add_book/', AddBookView.as_view(), name='add_book'),
+    path('delete_book/<int:pk>/', DeleteBookView.as_view(), name='delete_book'),
+    path('edit/<int:pk>/', EditBookView.as_view(), name='edit_book'),
+    path('search/', SearchBookView.as_view(), name='search_book'),
+    path('book/<int:book_id>/comment/<int:comment_id>/delete/', DeleteCommentView.as_view(), name='delete_comment'),
     path('admin/', admin.site.urls),
 
 ]
