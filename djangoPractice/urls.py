@@ -22,6 +22,9 @@ from django.urls import path
 from book.views import BookListView, BookDetailView, AddBookView, DeleteBookView, EditBookView, SearchBookView, \
     DeleteCommentView
 
+from clothes.views import OrderCreateView, ProductListView, OrderListView, \
+    OrderDetailView, OrderDeleteView, ProductFilterView, ProductCreateView, AddTagView, ProductDeleteView
+
 urlpatterns = [
     path('books/', BookListView.as_view(), name='book_list'),
     path('books/<int:pk>/', BookDetailView.as_view(), name='book_detail'),
@@ -30,6 +33,17 @@ urlpatterns = [
     path('edit/<int:pk>/', EditBookView.as_view(), name='edit_book'),
     path('search/', SearchBookView.as_view(), name='search_book'),
     path('book/<int:book_id>/comment/<int:comment_id>/delete/', DeleteCommentView.as_view(), name='delete_comment'),
+
+    path('add_tag/', AddTagView.as_view(), name='add_tag'),
+    path('products/', ProductListView.as_view(), name='product_list'),
+    path('products/create/', ProductCreateView.as_view(), name='product_create'),
+    path('products/<int:pk>/delete/', ProductDeleteView.as_view(), name='product_delete'),
+    path('orders/', OrderListView.as_view(), name='order_list'),
+    path('orders/create/', OrderCreateView.as_view(), name='order_create'),
+    path('orders/<int:pk>/', OrderDetailView.as_view(), name='order_detail'),
+    path('orders/<int:pk>/delete/', OrderDeleteView.as_view(), name='order_delete'),
+    path('products/filter/<int:tag_id>/', ProductFilterView.as_view(), name='product_list_by_tag'),
+
     path('admin/', admin.site.urls),
 
 ]

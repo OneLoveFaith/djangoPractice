@@ -1,0 +1,52 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+{% block title %}
+    Add a New Product
+{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+    <h2 class="my-4">Add a new product</h2>
+    <form method="post" enctype="multipart/form-data" class="needs-validation">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.name.label_tag }}
+            <input type="text" class="form-control" name="{{ form.name.name }}" id="{{ form.name.id }}" required>
+        </div>
+        <div class="form-group">
+            {{ form.description.label_tag }}
+            <textarea class="form-control" name="{{ form.description.name }}" id="{{ form.description.id }}" rows="5" required></textarea>
+        </div>
+        <div class="form-group">
+            {{ form.image.label_tag }}
+            <div class="custom-file">
+                {{ form.image }}
+                <label class="custom-file-label" for="{{ form.image.id }}">Select an image</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <img id="preview-image" src="" style="max-width: 300px;">
+        </div>
+
+        <div class="form-group">
+            {{ form.price.label_tag }}
+            <input type="number" class="form-control" name="{{ form.price.name }}" id="{{ form.price.id }}" required>
+        </div>
+        <div class="form-group">
+            {{ form.tags.label_tag }}
+            {{ form.tags }}
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Add Product</button>
+        </div>
+
+    </form>
+
+    <a href="{% url 'product_list' %}" class="btn btn-secondary my-3">Cancel</a>
+</div>
+
+<script src="{% static 'index.js' %}"></script>
+{% endblock content %}

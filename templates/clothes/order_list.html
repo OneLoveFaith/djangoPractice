@@ -1,0 +1,18 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}
+    Order List
+{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <h1>Order List</h1>
+        <ul>
+            {% for order in orders %}
+                <li><a href="{% url 'order_detail' order.id %}">Order {{ order.id }}</a></li>
+            {% empty %}
+                <li>No orders yet.</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock content %}

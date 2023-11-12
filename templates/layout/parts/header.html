@@ -7,21 +7,21 @@
         <nav>
             <ul>
                 <li>
-                    <a class="btn btn-outline-primary" href="{% url 'book_list' %}">Main</a>
-                     <a class="btn btn-outline-primary" href="{% url 'add_book' %}">Add a book</a>
+                    <a class="btn btn-outline-primary" href="{% url 'product_list' %}">Main</a>
+                     <a class="btn btn-outline-primary" href="{% url 'product_create' %}">Addition</a>
                 </li>
 
             </ul>
         </nav>
     </div>
 </header>
-<div class="container mt-3">
-    <form method="get" action="{% url 'search_book' %}">
-        <div class="input-group">
-            <input type="text" class="form-control" name="q" placeholder="Search for books">
-            <div class="input-group-append">
-                <button type="submit" class="btn btn-primary">Search</button>
-            </div>
-        </div>
-    </form>
-</div>
+{#<div class="container mt-3">#}
+{#    <form method="get" action="{% url 'search_book' %}">#}
+{#        <div class="input-group">#}
+{#            <input type="text" class="form-control" name="q" placeholder="Search for books">#}
+{#            <div class="input-group-append">#}
+{#                <button type="submit" class="btn btn-primary">Search</button>#}
+{#            </div>#}
+{#        </div>#}
+{#    </form>#}
+{#</div>#}

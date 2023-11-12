@@ -1,0 +1,26 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h2 class="my-4">Create a New Order</h2>
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label for="{{ form.customer_name.id }}" class="form-label">Customer Name</label>
+                <input type="text" class="form-control" id="{{ form.customer_name.id }}" name="{{ form.customer_name.name }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="{{ form.products.id }}" class="form-label">Products</label>
+                <select multiple class="form-select" id="{{ form.products.id }}" name="{{ form.products.name }}" required>
+                    {% for product in form.products.field.queryset %}
+                        <option value="{{ product.id }}">{{ product.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Create Order</button>
+        </form>
+    </div>
+{% endblock %}
